@@ -6,15 +6,15 @@ You can customize path for saving output, via ENVironment variables.
 Example of usage in Dockerfile:
 ```sh
 # [CMD Hack]---[BEGIN]
-RUN git clone --depth 1 --branch v1.1 https://github.com/natrix-fork/docker_entrypoint_extended .
+RUN git clone --depth 1 --branch v1.1 https://github.com/natrix-fork/docker_entrypoint_extended _run
 
 # remove git from system if need
 RUN apk del git
 
 # do script executable
-RUN chmod +x ./entrypoint__output_via_file.sh
+RUN chmod +x _run/entrypoint__output_via_file.sh
 
-ENTRYPOINT ["./entrypoint__output_via_file.sh", "python","script.py"]
+ENTRYPOINT ["_run/entrypoint__output_via_file.sh", "python","script.py"]
 # [CMD Hack]---[END]
 ```
 ## Processing git
@@ -42,5 +42,5 @@ RUN apt-get remove -y git \
 ```
 P.S.: command note. This for downloading special version and only it.
 ```sh
-git clone --depth 1 --branch $TAG $REPOSITORY_LINK .
+git clone --depth 1 --branch $TAG $REPOSITORY_LINK $DIRECTORY_TO_PLACE
 ```
